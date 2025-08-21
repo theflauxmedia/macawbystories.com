@@ -1,0 +1,115 @@
+{
+  "bangalore_images": {
+    "atrium-dining-main.jpg": {
+      "source": "/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.png",
+      "description": "Stunning atrium dining area with glass ceiling and tropical plants",
+      "category": "interior",
+      "tags": ["atrium", "glass-ceiling", "plants", "main-dining"]
+    },
+    "bar-crafting-cocktails.jpg": {
+      "source": "/lovable-uploads/55a7b609-54e9-44f4-89c8-a9a0457e6441.png",
+      "description": "Bar area with CRAFTING COCKTAIL & STORIES signage and upper level view",
+      "category": "interior",
+      "tags": ["bar", "crafting-cocktails", "signage", "upper-level"]
+    },
+    "central-dining-overview.jpg": {
+      "source": "/lovable-uploads/6f51ee45-ebd9-4968-87bc-81a4529c0ac4.png",
+      "description": "Central dining area overview with colorful seating and glass atrium",
+      "category": "interior",
+      "tags": ["central", "overview", "colorful-seating", "atrium"]
+    },
+    "tropical-dining-space.jpg": {
+      "source": "/lovable-uploads/719de173-88e6-4746-a136-0eb6ce9e87dc.png",
+      "description": "Tropical dining space with abundant plants and natural light",
+      "category": "interior",
+      "tags": ["tropical", "plants", "natural-light", "dining"]
+    },
+    "group-dining-setup.jpg": {
+      "source": "/lovable-uploads/922fb99c-5be6-40a5-92c6-79e56d2f406a.png",
+      "description": "Large group dining table setup with Macaw logo backdrop",
+      "category": "interior",
+      "tags": ["group-dining", "events", "macaw-logo", "large-table"]
+    },
+    "lush-garden-dining.jpg": {
+      "source": "/lovable-uploads/b2cb2ff8-8527-406c-bb46-4818da4f6507.png",
+      "description": "Lush garden-style dining area with tropical plants throughout",
+      "category": "interior",
+      "tags": ["garden", "lush", "tropical-plants", "natural"]
+    }
+  },
+  "chennai_images": {
+  "chennai_images": {
+    "bar-seating-area.jpg": {
+      "source": "/lovable-uploads/a573046e-435f-4564-b939-2993c75300e5.png",
+      "description": "Main bar area with circular seating and MACAW by STORIES 2.0 signage",
+      "category": "interior",
+      "tags": ["bar", "seating", "industrial", "signage"]
+    },
+    "outdoor-terrace-seating.jpg": {
+      "source": "/lovable-uploads/676b9ea1-e18b-470f-b96e-31b593dd4551.png",
+      "description": "Terrace seating area with modern furniture and plants",
+      "category": "outdoor",
+      "tags": ["terrace", "outdoor", "modern", "furniture"]
+    },
+    "indoor-dining-macaw-art.jpg": {
+      "source": "/lovable-uploads/a1d93a52-771b-419f-9107-995c2a7d4a26.png",
+      "description": "Indoor dining area featuring macaw artwork on walls",
+      "category": "interior",
+      "tags": ["dining", "artwork", "macaw", "interior"]
+    },
+    "rooftop-terrace.jpg": {
+      "source": "/lovable-uploads/9cf9f6fb-e16d-46f9-b2d3-654b8c26e73e.png",
+      "description": "Rooftop area with MACAW 2.0 signage and outdoor seating",
+      "category": "outdoor",
+      "tags": ["rooftop", "signage", "outdoor", "seating"]
+    },
+    "outdoor-city-view.jpg": {
+      "source": "/lovable-uploads/53404d9a-c127-4f4b-aa70-57548acb28ae.png",
+      "description": "Outdoor seating area with city skyline view",
+      "category": "outdoor",
+      "tags": ["outdoor", "city-view", "seating", "skyline"]
+    },
+    "corridor-wall-art.jpg": {
+      "source": "/lovable-uploads/92e42da7-b0db-44a1-af24-67ab12e92853.png",
+      "description": "Corridor with From BENGALURU to CHENNAI wall art and string lights",
+      "category": "architectural",
+      "tags": ["corridor", "wall-art", "chennai", "bengaluru", "lights"]
+    },
+    "interior-dining-colorful.jpg": {
+      "source": "/lovable-uploads/56ee91c5-80bb-4f36-b4b6-ea8c3e6af75e.png",
+      "description": "Main dining area with colorful chairs and industrial ceiling",
+      "category": "interior",
+      "tags": ["dining", "colorful", "chairs", "industrial", "ceiling"]
+    },
+    "bar-counter-main.jpg": {
+      "source": "/lovable-uploads/15122e82-24d6-4029-938e-4347087523f5.png",
+      "description": "Bar counter with colorful stools and MACAW by STORIES 2.0 signage",
+      "category": "interior",
+      "tags": ["bar", "counter", "stools", "colorful", "signage"]
+    },
+    "exterior-entrance.jpg": {
+      "source": "/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.png",
+      "description": "Main entrance with MACAW 2.0 and CRAFTING COCKTAIL & STORIES signage",
+      "category": "exterior",
+      "tags": ["entrance", "exterior", "signage", "night", "lighting"]
+    },
+    "circular-booth-dining.jpg": {
+      "source": "/lovable-uploads/5731ead5-b641-42d5-b802-0f7ce04739e5.png",
+      "description": "Interior dining area with signature circular orange booth seating and industrial ceiling",
+      "category": "interior",
+      "tags": ["booth", "circular", "orange", "dining", "industrial", "ceiling"]
+    },
+    "evening-interior-booths.jpg": {
+      "source": "/lovable-uploads/7fa8460c-8c7a-4d70-9468-ad68dc210130.png",
+      "description": "Evening interior view with circular booths, pendant lighting and plants",
+      "category": "interior",
+      "tags": ["evening", "booth", "lighting", "plants", "ambient"]
+    },
+    "night-dining-atmosphere.jpg": {
+      "source": "/lovable-uploads/bdc134bb-edc6-4eb2-8383-1cba21f80b4f.png",
+      "description": "Night time interior showing circular booth seating with MACAW branding visible",
+      "category": "interior",
+      "tags": ["night", "booth", "branding", "atmosphere", "dining"]
+    }
+  }
+}

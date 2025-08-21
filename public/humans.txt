@@ -1,0 +1,13 @@
+/* TEAM */
+Site: Macaw by Stories
+URL: https://www.macawbystories.com/
+
+/* THANKS */
+Built with React + Vite + Tailwind CSS
+
+/* CONTACT */
+General: contact@macawbystories.com
+Bookings: reservations@macawbystories.com
+Instagram: @macawbystories
+
+
