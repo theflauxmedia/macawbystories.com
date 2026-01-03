@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { Button } from './button';
 import { ChevronDown } from 'lucide-react';
-import heroImage from '@/assets/hero-video-placeholder.jpg';
 
 interface HeroSectionProps {
   onBookTableClick?: () => void;
@@ -20,7 +19,6 @@ export const HeroSection = ({ onBookTableClick }: HeroSectionProps) => {
         loop
         playsInline
         preload="auto"
-        poster={heroImage}
         aria-hidden="true"
         onLoadedMetadata={() => {
           if (backgroundVideoRef.current) {

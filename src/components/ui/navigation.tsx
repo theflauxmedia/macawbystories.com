@@ -27,8 +27,11 @@ export const Navigation = ({ onBookTableClick }: NavigationProps) => {
     { label: 'About Us', href: '/about-us', type: 'route' },
     { label: 'Locations', href: '/locations', type: 'route' },
     { label: 'Gallery', href: '/gallery', type: 'route' },
-    { label: 'Packages', href: '/packages', type: 'route' },
-    { label: 'Blog', href: '/blog', type: 'route' },
+    { label: 'Packages', href: '/packages', type: 'dropdown', options: [
+      { label: 'Bengaluru', href: '/packages' },
+      { label: 'Chennai', href: '/chennai-packages' }
+    ]},
+    { label: 'Media', href: '/media', type: 'route' },
     { label: 'Contact', href: '/contact', type: 'route' },
   ];
 
@@ -60,6 +63,23 @@ export const Navigation = ({ onBookTableClick }: NavigationProps) => {
                 >
                   {item.label}
                 </Link>
+              ) : item.type === 'dropdown' ? (
+                <DropdownMenu key={item.label}>
+                  <DropdownMenuTrigger asChild>
+                    <button className="text-foreground hover:text-primary transition-smooth font-medium text-sm lg:text-base whitespace-nowrap flex items-center">
+                      {item.label}
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="center" className="min-w-[180px]">
+                    {item.options?.map((option) => (
+                      <DropdownMenuItem key={option.label} asChild>
+                        <Link to={option.href} className="w-full">
+                          {option.label}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               ) : (
                 <a
                   key={item.label}
@@ -122,6 +142,22 @@ export const Navigation = ({ onBookTableClick }: NavigationProps) => {
                   >
                     {item.label}
                   </Link>
+                ) : item.type === 'dropdown' ? (
+                  <div key={item.label} className="space-y-1">
+                    <div className="text-foreground font-medium text-lg py-3 px-4 text-primary">
+                      {item.label}
+                    </div>
+                    {item.options?.map((option) => (
+                      <Link
+                        key={option.label}
+                        to={option.href}
+                        className="text-foreground hover:text-primary hover:bg-primary/10 transition-smooth font-medium text-base py-2 px-8 rounded-lg block truncate backdrop-blur-sm"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {option.label}
+                      </Link>
+                    ))}
+                  </div>
                 ) : (
                   <a
                     key={item.label}

@@ -84,5 +84,13 @@
   "main": "eslint.config.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theflauxmedia/macawbystories.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theflauxmedia/macawbystories.com/issues"
+  },
+  "homepage": "https://github.com/theflauxmedia/macawbystories.com#readme"
 }

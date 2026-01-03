@@ -198,8 +198,8 @@ const Packages = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageHead 
-        title="Packages - Macaw by Stories" 
-        description="Explore our event packages with appetizers, main courses, mocktails and desserts for your perfect celebration."
+        title="Bengaluru Packages - Macaw by Stories" 
+        description="Explore our event packages with appetizers, main courses, mocktails and desserts for your perfect celebration at our Bengaluru location."
       />
       <Navigation onBookTableClick={() => handleBookTableClick()} />
       
@@ -207,6 +207,10 @@ const Packages = () => {
         {/* Hero Section */}
         <section className="py-12 sm:py-16 px-4 bg-gradient-primary">
           <div className="container mx-auto text-center">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <span className="text-lg text-foreground">📍</span>
+              <span className="text-lg text-foreground font-medium">Bengaluru</span>
+            </div>
             <h1 className="font-cinzel text-3xl md:text-4xl font-bold text-primary mb-4">
               Celebration Packages
             </h1>
