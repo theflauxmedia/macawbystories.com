@@ -88,9 +88,12 @@ export const Footer = () => {
             </h3>
             <div className="space-y-3 sm:space-y-4 text-cream/80">
               <p className="text-xs sm:text-sm leading-relaxed">
-                2224–2225, AECS Layout, Near Singasandra<br />
-                Hosur Main Road, Bommanahalli<br />
-                Bengaluru - 560068
+                2, No 17/17, Deepa Plaza, 24th Main, 1st Phase, JP Nagar<br />
+                Bengaluru, Bengaluru Urban, Karnataka<br />
+                560078
+              </p>
+              <p className="text-xs sm:text-sm leading-relaxed">
+                GSTIN: 29AAIFO2564M1ZO
               </p>
               <div className="flex items-center justify-center sm:justify-start space-x-2">
                 <Phone className="w-4 h-4 flex-shrink-0" />
@@ -116,9 +119,12 @@ export const Footer = () => {
             </h3>
             <div className="space-y-3 sm:space-y-4 text-cream/80">
               <p className="text-xs sm:text-sm leading-relaxed">
-                132, Max Kailash Building<br />
-                Rajiv Gandhi Salai, Sholinganallur<br />
-                Chennai - 600119
+                Ground Floor, Kailash OMR<br />
+                Rajiv Gandhi Salai, Old Mahabalipuram Road, Sholinganallur<br />
+                Chennai, Tamil Nadu, 600119
+              </p>
+              <p className="text-xs sm:text-sm leading-relaxed">
+                GSTIN: 33AAVFT5910F1Z0
               </p>
               <div className="flex items-center justify-center sm:justify-start space-x-2">
                 <Phone className="w-4 h-4 flex-shrink-0" />
