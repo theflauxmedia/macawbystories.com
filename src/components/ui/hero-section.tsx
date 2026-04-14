@@ -48,9 +48,9 @@ export const HeroSection = ({ onBookTableClick }: HeroSectionProps) => {
         
         <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
           <p className="text-base sm:text-lg md:text-lg lg:text-xl text-cream mb-8 sm:mb-10 lg:mb-12 font-light leading-relaxed max-w-4xl mx-auto px-2 sm:px-4">
-            Chennai & Bengaluru rooftops serving signature sips, live energy,
+            Chennai & Bengaluru rooftops serving signature sips, live music energy,
             <br className="hidden sm:block" />
-            and elevated experiences.
+            and elevated dining—your next rooftop bar night out.
           </p>
         </div>
         

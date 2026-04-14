@@ -30,7 +30,7 @@ const Locations = () => {
       phone: '+91‑8068507673',
       hours: '12:00 PM – 1:00 AM',
       highlights: ['Rooftop', 'Cocktails', 'Live Music', 'Party Vibe', 'Dance Floor'],
-      description: 'Located in the heart of Bengaluru\'s tech corridor, our rooftop offers stunning city views, energetic music, and an atmosphere perfect for both corporate gatherings and weekend celebrations.',
+      description: 'Macaw by Stories Bengaluru in AECS Layout is a rooftop restaurant and cocktail bar built for fine dining, nightlife, and celebration dinners. Expect stunning city views, energetic music, and an atmosphere perfect for date nights, birthday parties, corporate dinners, and weekend celebrations near Whitefield.',
       mapUrl: 'https://maps.google.com/?q=2224–2225,+AECS+Layout,+Near+Singasandra,+Hosur+Main+Road,+Bommanahalli,+Bengaluru',
       reservationUrl: 'https://webbook.wegsoft.com/H7G6F5E4D3C2B1A0Z9Y8',
     },
@@ -74,9 +74,9 @@ const Locations = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageHead 
-        title="Locations - Macaw by Stories | Rooftop Bars in Chennai & Bengaluru"
-        description="Find Macaw by Stories rooftop restaurants in Chennai and Bengaluru. Two cities, one iconic nightlife experience. Get directions and book your table."
-        keywords="macaw by stories locations, rooftop bar chennai, rooftop bar bengaluru, omr restaurants, hosur road bars, singasandra restaurants"
+        title="Macaw by Stories Locations | Bangalore (AECS Layout) & Chennai Rooftop"
+        description="Visit Macaw by Stories in Bangalore (AECS Layout) and Chennai for rooftop dining, cocktails, live music, and nightlife. Get directions and reserve your table."
+        keywords="macaw by stories bangalore, macaw aecs layout, macaw restaurant bangalore, restaurants in aecs layout bangalore, restaurants near aecs layout, rooftop bar aecs layout bangalore, rooftop bar bangalore, fine dining near whitefield bangalore, luxury restaurant bangalore, rooftop bar near whitefield bangalore"
         canonicalUrl="https://macawbystories.com/locations"
         structuredData={structuredData}
       />
@@ -114,7 +114,7 @@ const Locations = () => {
                     <div className="relative overflow-hidden rounded-3xl shadow-luxury">
                       <img
                         src={location.image}
-                        alt={`${location.name} rooftop view`}
+                        alt={`${location.name} rooftop restaurant and bar`}
                         className="w-full h-96 object-cover hover:scale-105 transition-smooth duration-700"
                       />
                       <div className="absolute top-6 left-6">

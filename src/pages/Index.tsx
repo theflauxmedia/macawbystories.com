@@ -36,9 +36,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageHead 
-        title="Macaw by Stories - Two Cities, One Iconic Nightlife Vibe | Rooftop Bar"
-        description="Experience Chennai & Bengaluru's premier rooftop nightlife at Macaw by Stories. Live DJs, signature cocktails, skyline dining, and unforgettable experiences. Book now!"
-        keywords="rooftop bar bangalore, nightlife chennai, rooftop restobar, live dj bangalore, cocktails chennai omr, rooftop dining bengaluru"
+        title="Macaw by Stories Bangalore & Chennai | Rooftop Bar, Fine Dining & Nightlife"
+        description="Macaw by Stories brings iconic rooftop dining and nightlife to Bengaluru and Chennai—signature cocktails, live music, DJ nights, and elevated dining. Explore locations and book a table."
+        keywords="macaw by stories bangalore, rooftop bar bangalore, rooftop dining bangalore, rooftop restaurant bangalore, fine dining restaurant bangalore, luxury restaurant bangalore, cocktail bar bangalore, nightlife bangalore, live music restaurant bangalore, date night restaurant bangalore, best bars in bangalore"
         canonicalUrl="https://macawbystories.com"
         structuredData={structuredData}
       />

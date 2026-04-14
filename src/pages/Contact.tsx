@@ -76,6 +76,12 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <PageHead
+        title="Contact & Reservations | Macaw by Stories Bangalore (AECS Layout) & Chennai"
+        description="Book a table at Macaw by Stories—rooftop dining, cocktails, live music and nightlife in Bangalore (AECS Layout, near Whitefield) and Chennai. Contact us for reservations, private dining, celebrations, and corporate events."
+        keywords="book table restaurant bangalore, macaw by stories bangalore, macaw aecs layout, macaw restaurant bangalore, rooftop bar bangalore, fine dining near whitefield bangalore, private dining bangalore, corporate party venue bangalore, date night restaurant bangalore, restaurants near me, fine dining near me"
+        canonicalUrl="https://macawbystories.com/contact"
+      />
       <Navigation onBookTableClick={() => handleBookTableClick()} />
       
       <main className="pt-20">
@@ -87,7 +93,7 @@ const Contact = () => {
             </h1>
             <p className="text-xl text-foreground max-w-3xl mx-auto">
               Get in touch with us for reservations, events, or any questions. 
-              We're here to help create your perfect dining experience.
+              We’re here to help you book the perfect experience—date nights, birthday celebrations, private dining, and corporate dinners.
             </p>
           </div>
         </section>

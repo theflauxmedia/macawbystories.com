@@ -21,7 +21,7 @@ export const Footer = () => {
             </div>
             <p className="text-cream/80 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
               Where vibrant stories unfold and tropical luxury meets urban sophistication. 
-              Experience the extraordinary at our rooftop destinations.
+              Experience rooftop dining, cocktails, and nightlife in Bangalore and Chennai.
             </p>
             <div className="flex space-x-3 sm:space-x-4 justify-center sm:justify-start">
               <a 
@@ -93,6 +93,9 @@ export const Footer = () => {
                 560078
               </p>
               <p className="text-xs sm:text-sm leading-relaxed">
+                Business Name: ORANGE FORK LLP
+              </p>
+              <p className="text-xs sm:text-sm leading-relaxed">
                 GSTIN: 29AAIFO2564M1ZO
               </p>
               <div className="flex items-center justify-center sm:justify-start space-x-2">
@@ -122,6 +125,9 @@ export const Footer = () => {
                 Ground Floor, Kailash OMR<br />
                 Rajiv Gandhi Salai, Old Mahabalipuram Road, Sholinganallur<br />
                 Chennai, Tamil Nadu, 600119
+              </p>
+              <p className="text-xs sm:text-sm leading-relaxed">
+                Business Name: TRANQUILO HOSPITALITY LLP
               </p>
               <p className="text-xs sm:text-sm leading-relaxed">
                 GSTIN: 33AAVFT5910F1Z0
