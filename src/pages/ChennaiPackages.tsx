@@ -1,20 +1,34 @@
 import { Navigation } from '@/components/ui/navigation';
 import { Footer } from '@/components/ui/footer';
 import { PageHead } from '@/components/seo/PageHead';
+import { pageSeo } from '@/components/seo/pageSeo';
+import { buildBreadcrumbSchema, buildWebPageSchema } from '@/components/seo/structuredData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Phone, Clock, MapPin, Sparkles } from 'lucide-react';
 
 const ChennaiPackages = () => {
+  const seo = pageSeo.chennaiPackages;
+
   const handleCallClick = () => {
     window.location.href = 'tel:+918045883769';
   };
 
   return (
     <div className="min-h-screen bg-background">
-      <PageHead 
-        title="Chennai Packages - Coming Soon - Macaw by Stories" 
-        description="Exciting packages coming soon to Macaw by Stories Chennai. Stay tuned for our curated celebration packages."
+      <PageHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        path={seo.path}
+        ogImage={seo.ogImage}
+        structuredData={[
+          buildWebPageSchema({ name: seo.title, description: seo.description, path: seo.path }),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Chennai Packages', path: '/chennai-packages' },
+          ]),
+        ]}
       />
       <Navigation />
       

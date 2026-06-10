@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Button } from './button';
+import { OptimizedImage } from './optimized-image';
 import { MapPin, Clock, Phone } from 'lucide-react';
-import bangaloreImage from '@/assets/bangalore-location.jpg';
-import chennaiImage from '@/assets/chennai-location.jpg';
 
 interface LocationsSectionProps {
   onBookTableClick?: (location: string) => void;
@@ -17,10 +16,11 @@ export const LocationsSection = ({ onBookTableClick }: LocationsSectionProps) =>
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-scale-in');
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.15, rootMargin: '40px' }
     );
 
     if (sectionRef.current) {
@@ -36,7 +36,7 @@ export const LocationsSection = ({ onBookTableClick }: LocationsSectionProps) =>
       id: 'bengaluru',
       name: 'Macaw by Stories – Bengaluru',
       city: 'Bengaluru',
-      image: '/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.png',
+      image: '/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.webp',
       address: '2224–2225, AECS Layout, Near Singasandra, Hosur Main Road, Bommanahalli, Bengaluru',
       description: 'Rooftop paradise in the tech capital with cocktails, live music, party vibes, and an energetic dance floor.',
       highlights: ['Rooftop Views', 'Live Music', 'Dance Floor', 'Party Vibe'],
@@ -47,7 +47,7 @@ export const LocationsSection = ({ onBookTableClick }: LocationsSectionProps) =>
       id: 'chennai',
       name: 'Macaw by Stories – Chennai',
       city: 'Chennai',
-      image: '/lovable-uploads/5731ead5-b641-42d5-b802-0f7ce04739e5.png',
+      image: '/lovable-uploads/5731ead5-b641-42d5-b802-0f7ce04739e5.webp',
       address: '132, Max Kailash Building, Rajiv Gandhi Salai, Sholinganallur, Chennai – 600119',
       description: 'Coastal rooftop experience with DJ nights, signature cocktails, bar bites, and lively group vibes.',
       highlights: ['DJ Nights', 'Coastal Views', 'Bar Bites', 'Group Vibes'],
@@ -76,7 +76,7 @@ export const LocationsSection = ({ onBookTableClick }: LocationsSectionProps) =>
           {locations.map((location, index) => (
             <div
               key={location.id}
-              className={`location-card opacity-0 group cursor-pointer transition-smooth hover:transform hover:scale-105 w-full ${
+              className={`location-card opacity-0 group w-full transition-premium hover:-translate-y-1 ${
                 index === 1 ? 'lg:translate-y-8' : ''
               }`}
               style={{ animationDelay: `${index * 0.2}s` }}
@@ -84,10 +84,11 @@ export const LocationsSection = ({ onBookTableClick }: LocationsSectionProps) =>
               <div className="bg-card rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant hover:shadow-luxury transition-smooth h-full flex flex-col">
                 {/* Image */}
                 <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden flex-shrink-0">
-                  <img
+                  <OptimizedImage
                     src={location.image}
                     alt={`${location.name} rooftop restaurant`}
-                    className="w-full h-full object-cover transition-smooth group-hover:scale-110"
+                    className="transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    priority={index === 0}
                   />
                   <div className="absolute inset-0 bg-gradient-hero opacity-60" />
                   

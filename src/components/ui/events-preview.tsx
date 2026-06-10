@@ -15,7 +15,7 @@ export const EventsPreview = () => {
       date: '2024-01-20',
       time: '8:00 PM',
       description: 'Dance the night away with DJ sets and signature cocktails',
-      image: '/lovable-uploads/922fb99c-5be6-40a5-92c6-79e56d2f406a.png',
+      image: '/lovable-uploads/922fb99c-5be6-40a5-92c6-79e56d2f406a.webp',
       category: 'Party Night',
     },
     {
@@ -25,7 +25,7 @@ export const EventsPreview = () => {
       date: '2024-01-21',
       time: '6:00 PM',
       description: 'Acoustic music with stunning sunset views',
-      image: '/lovable-uploads/9cf9f6fb-e16d-46f9-b2d3-654b8c26e73e.png',
+      image: '/lovable-uploads/9cf9f6fb-e16d-46f9-b2d3-654b8c26e73e.webp',
       category: 'Live Music',
     },
     {
@@ -35,7 +35,7 @@ export const EventsPreview = () => {
       date: '2024-01-25',
       time: '7:00 PM',
       description: 'Network with professionals over premium drinks',
-      image: '/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.png',
+      image: '/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.webp',
       category: 'Corporate',
     },
   ];

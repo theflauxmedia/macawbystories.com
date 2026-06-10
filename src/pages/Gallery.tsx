@@ -2,11 +2,15 @@ import { useState } from 'react';
 import { Navigation } from '@/components/ui/navigation';
 import { Footer } from '@/components/ui/footer';
 import { PageHead } from '@/components/seo/PageHead';
+import { pageSeo } from '@/components/seo/pageSeo';
+import { buildBreadcrumbSchema, buildWebPageSchema } from '@/components/seo/structuredData';
 import { BookingModal } from '@/components/ui/booking-modal';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { OptimizedImage } from '@/components/ui/optimized-image';
 
 const Gallery = () => {
+  const seo = pageSeo.gallery;
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -32,84 +36,84 @@ const Gallery = () => {
       category: 'ambience',
       title: 'Chennai Bar Seating Area',
       description: 'Main bar area with circular seating and MACAW by STORIES 2.0 signage',
-      image: '/lovable-uploads/a573046e-435f-4564-b939-2993c75300e5.png',
+      image: '/lovable-uploads/a573046e-435f-4564-b939-2993c75300e5.webp',
     },
     {
       id: 2,
       category: 'ambience',
       title: 'Chennai Outdoor Terrace',
       description: 'Terrace seating area with modern furniture and plants',
-      image: '/lovable-uploads/676b9ea1-e18b-470f-b96e-31b593dd4551.png',
+      image: '/lovable-uploads/676b9ea1-e18b-470f-b96e-31b593dd4551.webp',
     },
     {
       id: 3,
       category: 'ambience',
       title: 'Chennai Indoor Dining',
       description: 'Indoor dining area featuring macaw artwork on walls',
-      image: '/lovable-uploads/a1d93a52-771b-419f-9107-995c2a7d4a26.png',
+      image: '/lovable-uploads/a1d93a52-771b-419f-9107-995c2a7d4a26.webp',
     },
     {
       id: 4,
       category: 'ambience',
       title: 'Chennai Rooftop Terrace',
       description: 'Rooftop area with MACAW 2.0 signage and outdoor seating',
-      image: '/lovable-uploads/9cf9f6fb-e16d-46f9-b2d3-654b8c26e73e.png',
+      image: '/lovable-uploads/9cf9f6fb-e16d-46f9-b2d3-654b8c26e73e.webp',
     },
     {
       id: 5,
       category: 'ambience',
       title: 'Chennai City View',
       description: 'Outdoor seating area with city skyline view',
-      image: '/lovable-uploads/53404d9a-c127-4f4b-aa70-57548acb28ae.png',
+      image: '/lovable-uploads/53404d9a-c127-4f4b-aa70-57548acb28ae.webp',
     },
     {
       id: 6,
       category: 'ambience',
       title: 'Chennai Corridor Art',
       description: 'Corridor with From BENGALURU to CHENNAI wall art',
-      image: '/lovable-uploads/92e42da7-b0db-44a1-af24-67ab12e92853.png',
+      image: '/lovable-uploads/92e42da7-b0db-44a1-af24-67ab12e92853.webp',
     },
     {
       id: 7,
       category: 'ambience',
       title: 'Chennai Colorful Interior',
       description: 'Main dining area with colorful chairs and industrial ceiling',
-      image: '/lovable-uploads/56ee91c5-80bb-4f36-b4b6-ea8c3e6af75e.png',
+      image: '/lovable-uploads/56ee91c5-80bb-4f36-b4b6-ea8c3e6af75e.webp',
     },
     {
       id: 8,
       category: 'ambience',
       title: 'Chennai Bar Counter',
       description: 'Bar counter with colorful stools and MACAW signage',
-      image: '/lovable-uploads/15122e82-24d6-4029-938e-4347087523f5.png',
+      image: '/lovable-uploads/15122e82-24d6-4029-938e-4347087523f5.webp',
     },
     {
       id: 9,
       category: 'ambience',
       title: 'Chennai Entrance',
       description: 'Main entrance with MACAW 2.0 and CRAFTING COCKTAIL signage',
-      image: '/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.png',
+      image: '/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.webp',
     },
     {
       id: 10,
       category: 'ambience',
       title: 'Chennai Circular Booths',
       description: 'Signature circular orange booth seating with industrial design',
-      image: '/lovable-uploads/5731ead5-b641-42d5-b802-0f7ce04739e5.png',
+      image: '/lovable-uploads/5731ead5-b641-42d5-b802-0f7ce04739e5.webp',
     },
     {
       id: 11,
       category: 'ambience',
       title: 'Chennai Evening Atmosphere',
       description: 'Evening interior with circular booths and ambient lighting',
-      image: '/lovable-uploads/7fa8460c-8c7a-4d70-9468-ad68dc210130.png',
+      image: '/lovable-uploads/7fa8460c-8c7a-4d70-9468-ad68dc210130.webp',
     },
     {
       id: 12,
       category: 'ambience',
       title: 'Chennai Night Dining',
       description: 'Night time interior with MACAW branding visible',
-      image: '/lovable-uploads/bdc134bb-edc6-4eb2-8383-1cba21f80b4f.png',
+      image: '/lovable-uploads/bdc134bb-edc6-4eb2-8383-1cba21f80b4f.webp',
     },
     // Bangalore Images
     {
@@ -117,28 +121,28 @@ const Gallery = () => {
       category: 'ambience',
       title: 'Bangalore Atrium Dining',
       description: 'Stunning glass atrium with tropical garden atmosphere',
-      image: '/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.png',
+      image: '/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.webp',
     },
     {
       id: 14,
       category: 'ambience',
       title: 'Bangalore Crafting Bar',
       description: 'Multi-level bar area with CRAFTING COCKTAIL & STORIES signage',
-      image: '/lovable-uploads/55a7b609-54e9-44f4-89c8-a9a0457e6441.png',
+      image: '/lovable-uploads/55a7b609-54e9-44f4-89c8-a9a0457e6441.webp',
     },
     {
       id: 15,
       category: 'ambience',
       title: 'Bangalore Central Dining',
       description: 'Central dining area with colorful seating and glass ceiling',
-      image: '/lovable-uploads/6f51ee45-ebd9-4968-87bc-81a4529c0ac4.png',
+      image: '/lovable-uploads/6f51ee45-ebd9-4968-87bc-81a4529c0ac4.webp',
     },
     {
       id: 16,
       category: 'ambience',
       title: 'Bangalore Tropical Space',
       description: 'Tropical dining space with abundant plants and natural light',
-      image: '/lovable-uploads/719de173-88e6-4746-a136-0eb6ce9e87dc.png',
+      image: '/lovable-uploads/719de173-88e6-4746-a136-0eb6ce9e87dc.webp',
     },
     {
       id: 17,
@@ -152,7 +156,7 @@ const Gallery = () => {
       category: 'ambience',
       title: 'Bangalore Garden Dining',
       description: 'Lush garden-style dining area with tropical plants',
-      image: '/lovable-uploads/b2cb2ff8-8527-406c-bb46-4818da4f6507.png',
+      image: '/lovable-uploads/b2cb2ff8-8527-406c-bb46-4818da4f6507.webp',
     },
     // Food & Mocktails (from public/food)
     {
@@ -290,6 +294,20 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <PageHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        path={seo.path}
+        ogImage={seo.ogImage}
+        structuredData={[
+          buildWebPageSchema({ name: seo.title, description: seo.description, path: seo.path }),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Gallery', path: '/gallery' },
+          ]),
+        ]}
+      />
       <Navigation onBookTableClick={() => handleBookTableClick()} />
       
       <main className="pt-20">
@@ -329,12 +347,12 @@ const Gallery = () => {
             {/* Gallery Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
               {filteredItems.map((item) => (
-                <Card key={item.id} className="group overflow-hidden bg-card border-border hover:shadow-luxury transition-smooth">
+                <Card key={item.id} className="group overflow-hidden bg-card border-border hover:shadow-luxury transition-premium">
                   <div className="relative overflow-hidden aspect-square">
-                    <img
+                    <OptimizedImage
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                     />
                     {item.category === 'ambience' && (
                       <>

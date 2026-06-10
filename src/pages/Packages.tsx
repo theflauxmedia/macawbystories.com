@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Navigation } from '@/components/ui/navigation';
 import { Footer } from '@/components/ui/footer';
 import { PageHead } from '@/components/seo/PageHead';
+import { pageSeo } from '@/components/seo/pageSeo';
+import { buildBreadcrumbSchema, buildWebPageSchema } from '@/components/seo/structuredData';
 import { BookingModal } from '@/components/ui/booking-modal';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -9,6 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Wine, Utensils, Cookie, Leaf, ChefHat, Check } from 'lucide-react';
 
 const Packages = () => {
+  const seo = pageSeo.packages;
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<string>('');
 
@@ -197,9 +200,19 @@ const Packages = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <PageHead 
-        title="Bengaluru Packages - Macaw by Stories" 
-        description="Explore our event packages with appetizers, main courses, mocktails and desserts for your perfect celebration at our Bengaluru location."
+      <PageHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        path={seo.path}
+        ogImage={seo.ogImage}
+        structuredData={[
+          buildWebPageSchema({ name: seo.title, description: seo.description, path: seo.path }),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Packages', path: '/packages' },
+          ]),
+        ]}
       />
       <Navigation onBookTableClick={() => handleBookTableClick()} />
       

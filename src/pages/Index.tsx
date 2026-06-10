@@ -8,10 +8,13 @@ import { LocationsSection } from '@/components/ui/locations-section';
 import { BookingModal } from '@/components/ui/booking-modal';
 import { Footer } from '@/components/ui/footer';
 import { PageHead } from '@/components/seo/PageHead';
+import { pageSeo } from '@/components/seo/pageSeo';
+import { buildWebPageSchema } from '@/components/seo/structuredData';
 
 const Index = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<string>('');
+  const seo = pageSeo.home;
 
   const handleBookTableClick = (location?: string) => {
     if (location) {
@@ -20,27 +23,19 @@ const Index = () => {
     setIsBookingModalOpen(true);
   };
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Macaw by Stories - Home",
-    "description": "Experience Chennai & Bengaluru's premier rooftop nightlife at Macaw by Stories. Live DJs, signature cocktails, skyline dining.",
-    "url": "https://macawbystories.com",
-    "mainEntity": {
-      "@type": "Restaurant",
-      "name": "Macaw by Stories",
-      "description": "Premier rooftop nightlife experience in Chennai and Bengaluru"
-    }
-  };
-
   return (
     <div className="min-h-screen bg-background">
-      <PageHead 
-        title="Macaw by Stories Bangalore & Chennai | Rooftop Bar, Fine Dining & Nightlife"
-        description="Macaw by Stories brings iconic rooftop dining and nightlife to Bengaluru and Chennai—signature cocktails, live music, DJ nights, and elevated dining. Explore locations and book a table."
-        keywords="macaw by stories bangalore, rooftop bar bangalore, rooftop dining bangalore, rooftop restaurant bangalore, fine dining restaurant bangalore, luxury restaurant bangalore, cocktail bar bangalore, nightlife bangalore, live music restaurant bangalore, date night restaurant bangalore, best bars in bangalore"
-        canonicalUrl="https://macawbystories.com"
-        structuredData={structuredData}
+      <PageHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        path={seo.path}
+        ogImage={seo.ogImage}
+        structuredData={buildWebPageSchema({
+          name: seo.title,
+          description: seo.description,
+          path: seo.path,
+        })}
       />
       
       <Navigation onBookTableClick={() => handleBookTableClick()} />

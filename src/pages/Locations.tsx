@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Navigation } from '@/components/ui/navigation';
 import { Footer } from '@/components/ui/footer';
 import { BookingModal } from '@/components/ui/booking-modal';
 import { PageHead } from '@/components/seo/PageHead';
+import { pageSeo } from '@/components/seo/pageSeo';
+import { buildBreadcrumbSchema, buildLocationsPageSchema } from '@/components/seo/structuredData';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MapPin, Clock, Phone, Instagram } from 'lucide-react';
-import bangaloreImage from '@/assets/bangalore-location.jpg';
-import chennaiImage from '@/assets/chennai-location.jpg';
+import { OptimizedImage } from '@/components/ui/optimized-image';
 
 const Locations = () => {
+  const seo = pageSeo.locations;
+  const { hash } = useLocation();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<string>('');
 
@@ -25,7 +29,7 @@ const Locations = () => {
       id: 'bengaluru',
       name: 'Macaw by Stories – Bengaluru',
       city: 'Bengaluru',
-      image: '/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.png',
+      image: '/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.webp',
       address: '2224–2225, AECS Layout, Near Singasandra, Hosur Main Road, Bommanahalli, Bengaluru',
       phone: '+91‑8068507673',
       hours: '12:00 PM – 1:00 AM',
@@ -38,7 +42,7 @@ const Locations = () => {
       id: 'chennai',
       name: 'Macaw by Stories – Chennai',
       city: 'Chennai',
-      image: '/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.png',
+      image: '/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.webp',
       address: '132, Max Kailash Building, Rajiv Gandhi Salai, Sholinganallur, Chennai – 600119',
       phone: '+91‑8045883769',
       hours: '12:00 PM – 11:30 PM',
@@ -50,35 +54,35 @@ const Locations = () => {
     },
   ];
 
-  // Handle direct navigation to specific location
+  // Scroll to location when arriving via hash (e.g. /locations#chennai)
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-    }
-  }, []);
+    if (!hash) return;
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Macaw by Stories Locations",
-    "description": "Find Macaw by Stories rooftop restaurants in Chennai and Bengaluru. Two cities, one iconic nightlife experience.",
-    "url": "https://macawbystories.com/locations"
-  };
+    const element = document.querySelector(hash);
+    if (element) {
+      const timeoutId = window.setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+
+      return () => window.clearTimeout(timeoutId);
+    }
+  }, [hash]);
 
   return (
     <div className="min-h-screen bg-background">
-      <PageHead 
-        title="Macaw by Stories Locations | Bangalore (AECS Layout) & Chennai Rooftop"
-        description="Visit Macaw by Stories in Bangalore (AECS Layout) and Chennai for rooftop dining, cocktails, live music, and nightlife. Get directions and reserve your table."
-        keywords="macaw by stories bangalore, macaw aecs layout, macaw restaurant bangalore, restaurants in aecs layout bangalore, restaurants near aecs layout, rooftop bar aecs layout bangalore, rooftop bar bangalore, fine dining near whitefield bangalore, luxury restaurant bangalore, rooftop bar near whitefield bangalore"
-        canonicalUrl="https://macawbystories.com/locations"
-        structuredData={structuredData}
+      <PageHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        path={seo.path}
+        ogImage={seo.ogImage}
+        structuredData={[
+          buildLocationsPageSchema(),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Locations', path: '/locations' },
+          ]),
+        ]}
       />
       
       <Navigation onBookTableClick={() => handleBookTableClick()} />
@@ -111,11 +115,12 @@ const Locations = () => {
                 >
                   {/* Image */}
                   <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                    <div className="relative overflow-hidden rounded-3xl shadow-luxury">
-                      <img
+                    <div className="relative overflow-hidden rounded-3xl shadow-luxury h-96">
+                      <OptimizedImage
                         src={location.image}
                         alt={`${location.name} rooftop restaurant and bar`}
-                        className="w-full h-96 object-cover hover:scale-105 transition-smooth duration-700"
+                        className="hover:scale-[1.02] transition-transform duration-700 ease-out"
+                        priority={index === 0}
                       />
                       <div className="absolute top-6 left-6">
                         <span className="bg-primary text-charcoal px-4 py-2 rounded-full font-semibold">

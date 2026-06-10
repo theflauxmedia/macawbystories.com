@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Button } from './button';
+import { OptimizedImage } from './optimized-image';
 
 export const GalleryPreview = () => {
   const previewItems = [
-    { src: '/lovable-uploads/922fb99c-5be6-40a5-92c6-79e56d2f406a.png', label: 'Party' },
-    { src: '/lovable-uploads/9cf9f6fb-e16d-46f9-b2d3-654b8c26e73e.png', label: 'Ambience' },
-    { src: '/lovable-uploads/5731ead5-b641-42d5-b802-0f7ce04739e5.png', label: 'Cocktails' },
+    { src: '/lovable-uploads/922fb99c-5be6-40a5-92c6-79e56d2f406a.webp', label: 'Party' },
+    { src: '/lovable-uploads/9cf9f6fb-e16d-46f9-b2d3-654b8c26e73e.webp', label: 'Ambience' },
+    { src: '/lovable-uploads/5731ead5-b641-42d5-b802-0f7ce04739e5.webp', label: 'Cocktails' },
     { src: '/food/4.webp', label: 'Food' },
-    { src: '/lovable-uploads/53404d9a-c127-4f4b-aa70-57548acb28ae.png', label: 'Rooftop' },
-    { src: '/lovable-uploads/719de173-88e6-4746-a136-0eb6ce9e87dc.png', label: 'Live Music' },
+    { src: '/lovable-uploads/53404d9a-c127-4f4b-aa70-57548acb28ae.webp', label: 'Rooftop' },
+    { src: '/lovable-uploads/719de173-88e6-4746-a136-0eb6ce9e87dc.webp', label: 'Live Music' },
   ];
 
   return (
@@ -25,15 +26,14 @@ export const GalleryPreview = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
           {previewItems.map((item, idx) => (
-            <div key={idx} className="group relative overflow-hidden rounded-xl lg:rounded-2xl bg-card shadow-luxury">
-              <div className="aspect-[4/3] w-full">
-                <img
-                  src={item.src}
-                  alt={`Macaw by Stories ${item.label.toLowerCase()} ${idx + 1}`}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
+            <div key={idx} className="group relative overflow-hidden rounded-xl lg:rounded-2xl bg-card shadow-elegant transition-premium hover:shadow-luxury">
+              <OptimizedImage
+                src={item.src}
+                alt={`Macaw by Stories ${item.label.toLowerCase()} ${idx + 1}`}
+                wrapperClassName="aspect-[4/3] w-full"
+                className="transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                priority={idx < 2}
+              />
               {/* <div className="absolute left-3 top-3 z-10">
                 <span className="bg-primary text-charcoal px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
                   {item.label}

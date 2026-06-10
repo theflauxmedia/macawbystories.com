@@ -1,13 +1,12 @@
 /* TEAM */
 Site: Macaw by Stories
-URL: https://www.macawbystories.com/
+URL: https://macawbystoriesindia.com/
 
 /* THANKS */
 Built with React + Vite + Tailwind CSS
+Website by TheFlauxMedia — https://theflauxmedia.in
 
 /* CONTACT */
-General: contact@macawbystories.com
-Bookings: reservations@macawbystories.com
-Instagram: @macawbystories
-
-
+Bangalore: +91-8068507673
+Chennai: +91-8045883769
+Instagram: @macawchennai

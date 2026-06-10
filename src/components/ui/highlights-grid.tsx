@@ -42,10 +42,10 @@ export const HighlightsGrid = () => {
             return (
               <div
                 key={highlight.title}
-                className="group text-center p-4 sm:p-6 lg:p-8 xl:p-10 rounded-xl lg:rounded-2xl xl:rounded-3xl hover:bg-background transition-smooth animate-fade-in"
+                className="group text-center p-4 sm:p-6 lg:p-8 xl:p-10 rounded-xl lg:rounded-2xl xl:rounded-3xl hover:bg-background/60 transition-premium"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 lg:mb-6 xl:mb-8 group-hover:scale-110 transition-smooth">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 lg:mb-6 xl:mb-8 group-hover:scale-105 transition-premium">
                   <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 lg:w-9 lg:h-9 xl:w-10 xl:h-10 text-charcoal" />
                 </div>
                 <h3 className="font-cinzel text-sm sm:text-base lg:text-base xl:text-lg font-bold text-primary mb-2 sm:mb-3 lg:mb-4 xl:mb-6 leading-tight">

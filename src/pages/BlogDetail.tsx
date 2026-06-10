@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { Navigation } from '@/components/ui/navigation';
 import { Footer } from '@/components/ui/footer';
 import { PageHead } from '@/components/seo/PageHead';
+import { keywordSets } from '@/components/seo/keywordSets';
+import { buildArticleSchema, buildBreadcrumbSchema } from '@/components/seo/structuredData';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
@@ -84,7 +86,7 @@ const BLOGS = [
     author: 'Design Team',
     date: '2024-01-12',
     readTime: '7 min read',
-    image: '/lovable-uploads/6f51ee45-ebd9-4968-87bc-81a4529c0ac4.png',
+    image: '/lovable-uploads/6f51ee45-ebd9-4968-87bc-81a4529c0ac4.webp',
     excerpt: 'Take a journey through the creative process behind our stunning rooftop designs that blend nature with luxury.',
     content: (
       <div className="prose prose-invert max-w-none">
@@ -263,7 +265,7 @@ const BLOGS = [
     author: 'Macaw Team',
     date: '2024-01-05',
     readTime: '5 min read',
-    image: '/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.png',
+    image: '/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.webp',
     excerpt: 'From sunset sessions to late-night DJ sets, discover the perfect time to experience our Chennai location.',
     content: (
       <div className="prose prose-invert max-w-none">
@@ -514,9 +516,28 @@ const BlogDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <PageHead 
-        title={`${blog.title} - Macaw by Stories`} 
+      <PageHead
+        title={`${blog.title} | Macaw by Stories`}
         description={blog.excerpt}
+        keywords={keywordSets.blog(blog.title)}
+        path={`/media/blog/${blog.slug}`}
+        ogImage={blog.image}
+        ogType="article"
+        structuredData={[
+          buildArticleSchema({
+            title: blog.title,
+            description: blog.excerpt,
+            path: `/media/blog/${blog.slug}`,
+            image: blog.image,
+            datePublished: blog.date,
+            author: blog.author,
+          }),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Media', path: '/media' },
+            { name: blog.title, path: `/media/blog/${blog.slug}` },
+          ]),
+        ]}
       />
       <Navigation />
 

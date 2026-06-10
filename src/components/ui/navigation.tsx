@@ -48,6 +48,9 @@ export const Navigation = ({ onBookTableClick }: NavigationProps) => {
             <img 
               src="/lovable-uploads/aeb86edc-b26e-4db4-a52f-ce91f9aa64d1.png" 
               alt="Macaw by Stories Logo" 
+              width={64}
+              height={64}
+              decoding="async"
               className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex-shrink-0"
             />
           </Link>

@@ -1,3 +1,6 @@
+User-agent: *
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 
@@ -10,7 +13,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
-Sitemap: https://www.macawbystories.com/sitemap.xml
-Host: www.macawbystories.com
+Sitemap: https://macawbystoriesindia.com/sitemap.xml
+Host: macawbystoriesindia.com

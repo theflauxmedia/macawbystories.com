@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "cp public/.htaccess dist/.htaccess",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "compress-media": "bash scripts/compress-media.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

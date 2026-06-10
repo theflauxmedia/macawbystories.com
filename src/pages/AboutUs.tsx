@@ -2,12 +2,15 @@ import { useState } from 'react';
 import { Navigation } from '@/components/ui/navigation';
 import { Footer } from '@/components/ui/footer';
 import { PageHead } from '@/components/seo/PageHead';
+import { pageSeo } from '@/components/seo/pageSeo';
+import { buildBreadcrumbSchema, buildWebPageSchema } from '@/components/seo/structuredData';
 import { BookingModal } from '@/components/ui/booking-modal';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Leaf, Sparkles, Music } from 'lucide-react';
 
 const AboutUs = () => {
+  const seo = pageSeo.about;
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<string>('');
 
@@ -20,6 +23,20 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <PageHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        path={seo.path}
+        ogImage={seo.ogImage}
+        structuredData={[
+          buildWebPageSchema({ name: seo.title, description: seo.description, path: seo.path }),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'About Us', path: '/about-us' },
+          ]),
+        ]}
+      />
       <Navigation onBookTableClick={() => handleBookTableClick()} />
       
       <main className="pt-20">

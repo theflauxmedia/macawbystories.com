@@ -3,6 +3,8 @@ import { Navigation } from '@/components/ui/navigation';
 import { Footer } from '@/components/ui/footer';
 import { BookingModal } from '@/components/ui/booking-modal';
 import { PageHead } from '@/components/seo/PageHead';
+import { pageSeo } from '@/components/seo/pageSeo';
+import { buildBreadcrumbSchema, buildWebPageSchema } from '@/components/seo/structuredData';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -10,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { MapPin, Phone, Clock, Navigation as NavigationIcon } from 'lucide-react';
 
 const Contact = () => {
+  const seo = pageSeo.contact;
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<string>('');
 
@@ -77,10 +80,18 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageHead
-        title="Contact & Reservations | Macaw by Stories Bangalore (AECS Layout) & Chennai"
-        description="Book a table at Macaw by Stories—rooftop dining, cocktails, live music and nightlife in Bangalore (AECS Layout, near Whitefield) and Chennai. Contact us for reservations, private dining, celebrations, and corporate events."
-        keywords="book table restaurant bangalore, macaw by stories bangalore, macaw aecs layout, macaw restaurant bangalore, rooftop bar bangalore, fine dining near whitefield bangalore, private dining bangalore, corporate party venue bangalore, date night restaurant bangalore, restaurants near me, fine dining near me"
-        canonicalUrl="https://macawbystories.com/contact"
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        path={seo.path}
+        ogImage={seo.ogImage}
+        structuredData={[
+          buildWebPageSchema({ name: seo.title, description: seo.description, path: seo.path }),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Contact', path: '/contact' },
+          ]),
+        ]}
       />
       <Navigation onBookTableClick={() => handleBookTableClick()} />
       

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Navigation } from '@/components/ui/navigation';
 import { Footer } from '@/components/ui/footer';
 import { PageHead } from '@/components/seo/PageHead';
+import { pageSeo } from '@/components/seo/pageSeo';
+import { buildBreadcrumbSchema, buildWebPageSchema } from '@/components/seo/structuredData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -10,6 +12,7 @@ import { ExternalLink, Calendar, Newspaper, BookOpen, User, Clock } from 'lucide
 import { Link } from 'react-router-dom';
 
 const Media = () => {
+  const seo = pageSeo.media;
   const [activeTab, setActiveTab] = useState('press-releases');
 
   const pressReleases = [
@@ -20,7 +23,7 @@ const Media = () => {
       date: "August 14, 2024",
       excerpt: "The Bengaluru-based Macaw by Stories comes to Chennai to offer a refreshing nightlife experience with inventive dishes like a sambar risotto, and refreshing junglebird cocktails.",
       url: "https://www.thehindu.com/food/dining/macaw-offers-a-vibrant-dining-experience-in-chennais-omr/article68505488.ece",
-      image: "/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.png", // Chennai location image
+      image: "/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.webp", // Chennai location image
       category: "Restaurant Launch",
       readTime: "5 min read"
     },
@@ -31,7 +34,7 @@ const Media = () => {
       date: "June 12, 2023",
       excerpt: "Located on Hosur road in Bengaluru, Macaw by Stories aims to revolutionise the city's nightlife landscape with its unique blend of electrifying music, cutting-edge design, and unparalleled entertainment offerings.",
       url: "https://hospitality.economictimes.indiatimes.com/news/restaurants/macaw-by-stories-a-craft-brewery-and-kitchen-opens-in-bengaluru/100934135",
-      image: "/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.png", // Bengaluru location image
+      image: "/lovable-uploads/1da2dad0-5f5a-4a7c-a762-c371ea2063a8.webp", // Bengaluru location image
       category: "Restaurant Launch",
       readTime: "3 min read"
     },
@@ -42,7 +45,7 @@ const Media = () => {
       date: "June 2023",
       excerpt: "Discover the newest addition to Bengaluru's nightlife scene with Macaw by Stories, featuring craft beers, innovative cocktails, and an immersive dining experience.",
       url: "https://lbb.in/bangalore/macaw-by-stories-hosur/",
-      image: "/lovable-uploads/aeb86edc-b26e-4db4-a52f-ce91f9aa64d1.png", // Macaw logo
+      image: "/lovable-uploads/aeb86edc-b26e-4db4-a52f-ce91f9aa64d1.webp", // Macaw logo
       imageFit: 'contain' as const,
       category: "Feature",
       readTime: "4 min read"
@@ -83,7 +86,7 @@ const Media = () => {
       author: 'Design Team',
       date: '2024-01-12',
       readTime: '7 min read',
-      image: '/lovable-uploads/6f51ee45-ebd9-4968-87bc-81a4529c0ac4.png',
+      image: '/lovable-uploads/6f51ee45-ebd9-4968-87bc-81a4529c0ac4.webp',
     },
     {
       id: 3,
@@ -119,7 +122,7 @@ const Media = () => {
       author: 'Macaw Team',
       date: '2024-01-05',
       readTime: '5 min read',
-      image: '/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.png',
+      image: '/lovable-uploads/72010d4f-e3e8-494a-9834-c311e846743e.webp',
     },
     {
       id: 6,
@@ -148,9 +151,19 @@ const Media = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <PageHead 
-        title="Media - Macaw by Stories" 
-        description="Stay updated with the latest news, press releases, and blog posts from Macaw by Stories. Discover our journey, achievements, and insights."
+      <PageHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        path={seo.path}
+        ogImage={seo.ogImage}
+        structuredData={[
+          buildWebPageSchema({ name: seo.title, description: seo.description, path: seo.path }),
+          buildBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Media', path: '/media' },
+          ]),
+        ]}
       />
       <Navigation />
       

@@ -1,88 +1,137 @@
 import { useEffect } from 'react';
+import {
+  SITE_NAME,
+  DEFAULT_OG_IMAGE,
+  absoluteUrl,
+} from './siteConfig';
 
-interface PageHeadProps {
+const PAGE_JSON_LD_ID = 'page-structured-data';
+
+export interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
+export interface PageHeadProps {
   title: string;
   description: string;
   keywords?: string;
+  path?: string;
   canonicalUrl?: string;
   ogImage?: string;
-  structuredData?: object;
+  ogType?: 'website' | 'article';
+  structuredData?: object | object[];
+  breadcrumbs?: BreadcrumbItem[];
+  noIndex?: boolean;
 }
 
-export const PageHead = ({ 
-  title, 
-  description, 
-  keywords, 
+function upsertMeta(
+  selector: string,
+  attribute: 'name' | 'property',
+  key: string,
+  content: string,
+) {
+  let element = document.querySelector<HTMLMetaElement>(selector);
+  if (!element) {
+    element = document.createElement('meta');
+    element.setAttribute(attribute, key);
+    document.head.appendChild(element);
+  }
+  element.setAttribute('content', content);
+}
+
+function upsertLink(rel: string, href: string) {
+  let element = document.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+  if (!element) {
+    element = document.createElement('link');
+    element.setAttribute('rel', rel);
+    document.head.appendChild(element);
+  }
+  element.setAttribute('href', href);
+}
+
+function setStructuredData(data: object | object[] | undefined) {
+  const existing = document.getElementById(PAGE_JSON_LD_ID);
+  if (existing) {
+    existing.remove();
+  }
+
+  if (!data) return;
+
+  const script = document.createElement('script');
+  script.id = PAGE_JSON_LD_ID;
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(
+    Array.isArray(data) ? { '@context': 'https://schema.org', '@graph': data } : data,
+  );
+  document.head.appendChild(script);
+}
+
+export const PageHead = ({
+  title,
+  description,
+  keywords,
+  path = '/',
   canonicalUrl,
-  ogImage,
-  structuredData 
+  ogImage = DEFAULT_OG_IMAGE,
+  ogType = 'website',
+  structuredData,
+  breadcrumbs,
+  noIndex = false,
 }: PageHeadProps) => {
+  const structuredDataKey = structuredData ? JSON.stringify(structuredData) : '';
+
   useEffect(() => {
-    // Update title
+    const canonical = canonicalUrl ?? absoluteUrl(path);
+    const resolvedOgImage = ogImage.startsWith('http') ? ogImage : absoluteUrl(ogImage);
+
     document.title = title;
-    
-    // Update meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', description);
-    }
-    
-    // Update meta keywords
+
+    upsertMeta('meta[name="description"]', 'name', 'description', description);
+
     if (keywords) {
-      const metaKeywords = document.querySelector('meta[name="keywords"]');
-      if (metaKeywords) {
-        metaKeywords.setAttribute('content', keywords);
-      }
+      upsertMeta('meta[name="keywords"]', 'name', 'keywords', keywords);
     }
-    
-    // Update canonical URL
-    if (canonicalUrl) {
-      let canonicalLink = document.querySelector('link[rel="canonical"]');
-      if (!canonicalLink) {
-        canonicalLink = document.createElement('link');
-        canonicalLink.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonicalLink);
-      }
-      canonicalLink.setAttribute('href', canonicalUrl);
-    }
-    
-    // Update Open Graph tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute('content', title);
-    }
-    
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) {
-      ogDescription.setAttribute('content', description);
-    }
-    
-    if (ogImage) {
-      const ogImageTag = document.querySelector('meta[property="og:image"]');
-      if (ogImageTag) {
-        ogImageTag.setAttribute('content', ogImage);
-      }
-    }
-    
-    // Update Twitter tags
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) {
-      twitterTitle.setAttribute('content', title);
-    }
-    
-    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDescription) {
-      twitterDescription.setAttribute('content', description);
-    }
-    
-    // Add structured data
-    if (structuredData) {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) {
-        existingScript.textContent = JSON.stringify(structuredData);
-      }
-    }
-  }, [title, description, keywords, canonicalUrl, ogImage, structuredData]);
-  
+
+    upsertMeta(
+      'meta[name="robots"]',
+      'name',
+      'robots',
+      noIndex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+    );
+
+    upsertLink('canonical', canonical);
+
+    upsertMeta('meta[property="og:title"]', 'property', 'og:title', title);
+    upsertMeta('meta[property="og:description"]', 'property', 'og:description', description);
+    upsertMeta('meta[property="og:type"]', 'property', 'og:type', ogType);
+    upsertMeta('meta[property="og:url"]', 'property', 'og:url', canonical);
+    upsertMeta('meta[property="og:image"]', 'property', 'og:image', resolvedOgImage);
+    upsertMeta('meta[property="og:image:alt"]', 'property', 'og:image:alt', `${SITE_NAME} — rooftop bar and fine dining`);
+    upsertMeta('meta[property="og:site_name"]', 'property', 'og:site_name', SITE_NAME);
+    upsertMeta('meta[property="og:locale"]', 'property', 'og:locale', 'en_IN');
+
+    upsertMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
+    upsertMeta('meta[name="twitter:title"]', 'name', 'twitter:title', title);
+    upsertMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
+    upsertMeta('meta[name="twitter:image"]', 'name', 'twitter:image', resolvedOgImage);
+
+    setStructuredData(structuredData);
+
+    return () => {
+      document.getElementById(PAGE_JSON_LD_ID)?.remove();
+    };
+  }, [
+    title,
+    description,
+    keywords,
+    path,
+    canonicalUrl,
+    ogImage,
+    ogType,
+    structuredDataKey,
+    noIndex,
+  ]);
+
   return null;
 };
